@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{css/main.css}">
+</head>
+<body>
+
+<a th:href="@{https://api.nasa.gov/planetary/apod?api_key=enjSdOo36CZz7MOBlK29JUmsJ1Do8ya9LHhcQ0Jb}">link</a><br>
+<a th:href="@{image}">image</a><br>
+<img id="nasa-image" th:src="@{image}" alt="nasa image"><br>
+<!--<img th:src="@{https://apod.nasa.gov/apod/image/2405/BhShredder_NASA_1080.jpg}" alt="nasa image"><br>-->
+
+</body>
+</html>
