@@ -2,15 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
-    <link rel="stylesheet" th:href="@{css/main.css}">
+    <link rel="stylesheet" th:href="@{styles/main.css}">
 </head>
 <body>
 
-<a th:href="@{https://api.nasa.gov/planetary/apod?api_key=enjSdOo36CZz7MOBlK29JUmsJ1Do8ya9LHhcQ0Jb}">link</a><br>
-<a th:href="@{image}">image</a><br>
-<img id="nasa-image" th:src="@{image}" alt="nasa image"><br>
-<!--<img th:src="@{https://apod.nasa.gov/apod/image/2405/BhShredder_NASA_1080.jpg}" alt="nasa image"><br>-->
+<div id="content">
+    <div th:each="map :${url_map}">
+        <a th:href="@{https://api.nasa.gov/planetary/apod?api_key=enjSdOo36CZz7MOBlK29JUmsJ1Do8ya9LHhcQ0Jb}">link</a><br>
+        <a th:href="@{${map.value}}">image</a><br>
+        <img id="nasa-image" th:if="${map.key == 'image'}" th:src="@{${map.value}}" alt="nasa image"><br>
+<!--        <video id="nasa-video" th:if="${map.key == 'video'}" autoplay muted loop poster="/images/NASA_logo.gif">
+            <source th:src="@{${map.value}}" type="video/mp4">
+        </video>-->
+        <iframe id="nasa-video" th:if="${map.key == 'video'}" th:src="@{${map.value}} + '&autoplay=1&mute=1&loop=1'"></iframe>
+    </div>
+</div>
 
 </body>
 </html>
